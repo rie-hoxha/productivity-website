@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+
+/* Set up a 3x3 grid for the container */
+.pomodoro-timer-container {
+  font-family: 'Space Grotesk', sans-serif;
+  display: grid;
+  grid-template-rows: auto auto auto; /* Three rows with auto height */
+  grid-template-columns: 1fr; /* Single column, takes full width */
+  height: 100vh;
+  justify-content: center; /* Center content horizontally */
+  align-content: center; /* Center content vertically */
+  background-image: url('https://images4.alphacoders.com/133/1330653.png');
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3); /* adds overlay */
+}
+h2{
+  text-align: center;
+  color: white;
+  font-size: 37px;
+}
+
+/* Center the clock and actions in the second row */
+.clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  color: white;
+}
+
+/* Center the timer controls (Study and Break buttons) in the first row */
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Center the timer actions (Start and Reset buttons) in the third row */
+.timer-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Define styles for the control buttons and action buttons */
+.control-button, .action-button {
+  margin: 5px;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 18px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+.control-button {
+  background: rgba(0, 0, 0, 0); /* Set the background to transparent */
+  border: 2px white solid;
+}
+.control-button:hover{
+  background-color: white;
+  color: black;
+}
+
+.control-button.active {
+  background-color: white;
+  color: black;
+}
+
+
+.action-button {
+  background-color: black;
+  border: 1px solid black;
+}
+.action-button:hover{
+  background-color: white;
+  color: black;
+  border: white 1px solid;
+  font-weight: bold;
+}
+
+.clock-numbers {
+  font-weight: bold;
+}
+
+/* Add styles for the Font Awesome icons to make them white */
+.action-icons {
+  margin: 10px;
+  font-size: 30px; /* You can adjust the size as needed */
+  color: white;
+  cursor: pointer;
+}
+
+.rotate {
+  animation: rotate360 0.5s linear infinite;
+  animation-iteration-count: 1;
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+

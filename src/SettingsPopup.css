@@ -1,0 +1,124 @@
+.settings-popup {
+  position: absolute;
+  background: black; /* Set the background to black */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 530px;
+  display: flex;
+  border-radius: 8px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+  padding: 20px;
+  height: 300px; /* Set a fixed height for the popup window */
+  overflow: hidden; /* Hide content that exceeds the fixed height */
+  flex-direction: column;
+}
+
+.settings-popup.show {
+  display: block;
+  opacity: 1;
+}
+
+.split-screen {
+  display: flex;
+}
+
+.left-panel {
+  background-color: black;
+  width: 30%;
+  padding: 20px;
+}
+
+.left-panel-button {
+  background: transparent;
+  border: none;
+  color: white; /* Set the text color to white */
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.left-panel-button.selected {
+  background-color: #333; /* Change the background color for the selected button */
+}
+
+.right-panel {
+  flex: 1;
+  padding: 20px;
+  color: white; /* Set the text color to white */
+}
+
+.settings-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.input-label {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  position: fixed; /* Set the buttons as fixed elements */
+  bottom: 0; /* Position at the bottom of the window */
+  width: 80%; /* Take up the full width of the window */
+}
+
+button {
+  padding: 7px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.save-button{
+  background-color: #fff;
+  color: black;
+  margin-right: -3em ;
+}
+.close-button {
+  background-color: #6C757E;
+  color: white;
+  margin-left: 20%;
+}
+
+.close-button:hover{
+  background-color: #5C636B;
+}
+
+.reset-all-button {
+  background: transparent; /* Set the background to transparent */
+  border: 2px solid #DC3546; /* Set a red border */
+  color: #DC3546; /* Set the text color to red */
+}
+
+.reset-all-button:hover {
+  background: #DC3546; /* Set a red background on hover */
+  border: 2px solid #DC3546; /* Keep the red border on hover */
+  color: white; /* Set white text on hover */
+}
