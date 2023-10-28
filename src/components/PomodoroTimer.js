@@ -15,9 +15,15 @@ const PomodoroTimer = () => {
   const [studyTime, setStudyTime] = useState(50); // Initial study time
   const [breakTime, setBreakTime] = useState(25); // Initial break time
 
-  const handleSessionTypeChange = (type, duration) => {
+ 
+  // Handle session type change
+  const handleSessionTypeChange = (type) => {
     setSessionType(type);
-    setTime({ minutes: duration, seconds: 0 });
+    if (type === 'study') {
+      setTime({ minutes: studyTime, seconds: 0 });
+    } else {
+      setTime({ minutes: breakTime, seconds: 0 });
+    }
   };
 
   const toggleTimer = () => {
@@ -75,12 +81,22 @@ const PomodoroTimer = () => {
     setShowSettings(false);
   };
 
+
   const handleSettingsSave = () => {
-    // Update the study and break times with the new values
-    setTime({ minutes: studyTime, seconds: 0 });
+    // Update the session times with the new values
+    setStudyTime(studyTime);
     setBreakTime(breakTime);
+  
+    // Update the time based on the current session type
+    if (sessionType === 'study') {
+      setTime({ minutes: studyTime, seconds: 0 });
+    } else {
+      setTime({ minutes: breakTime, seconds: 0 });
+    }
+  
     setShowSettings(false);
   };
+  
 
   return (
     <div className="pomodoro-timer-container">

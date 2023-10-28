@@ -9,7 +9,8 @@ const SettingsPopup = ({
   breakTime,
   handleSettingsClose,
   handleSettingsSave,
-  handleResetAll,
+
+  sessionType, //Added as a prop
 }) => {
   const [selectedSetting, setSelectedSetting] = useState('general');
 
@@ -31,6 +32,7 @@ const SettingsPopup = ({
                 onChange={(e) => setStudyTime(e.target.value)}
               />
             </label>
+            
             <label className="input-label">
               Break Time (minutes):
               <input
@@ -51,6 +53,15 @@ const SettingsPopup = ({
       );
     }
   };
+
+  const handleResetAll = () => {
+    // Reset the study and break times to their initial values
+    setStudyTime(50); // Set it to the initial study time
+    setBreakTime(25); // Set it to the initial break time
+
+    // For the background resetting later
+  };
+  
 
   return (
     <div className={`settings-popup ${showSettings ? 'show' : ''}`}>
