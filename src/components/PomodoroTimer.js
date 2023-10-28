@@ -87,21 +87,37 @@ const PomodoroTimer = () => {
       <h2>pomodoro</h2>
       <div className="timer-controls">
         <button
-          className={`control-button ${sessionType === 'study' ? 'active' : ''}`}
-          onClick={() => handleSessionTypeChange('study', 50)}
+          className={`control-button ${
+            sessionType === "study" ? "active" : ""
+          }`}
+          onClick={() => handleSessionTypeChange("study", 50)}
         >
           Study
         </button>
         <button
-          className={`control-button ${sessionType === 'break' ? 'active' : ''}`}
-          onClick={() => handleSessionTypeChange('break', 25)}
+          className={`control-button ${
+            sessionType === "break" ? "active" : ""
+          }`}
+          onClick={() => handleSessionTypeChange("break", 25)}
         >
           Break
         </button>
       </div>
       <div className="clock">
         <div className="clock-numbers">
-          {`${time.minutes.toString().padStart(2, '0')}:${time.seconds.toString().padStart(2, '0')}`}
+          <span className="digit">
+            {time.minutes.toString().padStart(2, "0").charAt(0)}
+          </span>
+          <span className="digit">
+            {time.minutes.toString().padStart(2, "0").charAt(1)}
+          </span>
+          <span>:</span>
+          <span className="digit">
+            {time.seconds.toString().padStart(2, "0").charAt(0)}
+          </span>
+          <span className="digit">
+            {time.seconds.toString().padStart(2, "0").charAt(1)}
+          </span>
         </div>
       </div>
       <div className="timer-actions">
@@ -113,7 +129,11 @@ const PomodoroTimer = () => {
           className={`action-icons ${rotateClass}`}
           onClick={handleRestart}
         />
-        <FontAwesomeIcon icon={faCog} className="action-icons" onClick={handleSettingsClick} />
+        <FontAwesomeIcon
+          icon={faCog}
+          className="action-icons"
+          onClick={handleSettingsClick}
+        />
       </div>
       {showSettings && (
         <SettingsPopup

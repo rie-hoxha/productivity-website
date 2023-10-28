@@ -29,7 +29,20 @@ h2{
   align-items: center;
   font-size: 100px;
   color: white;
+  
 }
+.clock-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.digit {
+  width: 4rem; /* Set a fixed width for each digit */
+  text-align: center;
+}
+
 
 /* Center the timer controls (Study and Break buttons) in the first row */
 .timer-controls {
