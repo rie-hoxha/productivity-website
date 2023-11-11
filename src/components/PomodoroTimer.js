@@ -1,3 +1,4 @@
+// PomodoroTimer.js
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedoAlt, faCog } from '@fortawesome/free-solid-svg-icons';
@@ -5,7 +6,7 @@ import '../PomodoroTimer.css';
 import SettingsPopup from './SettingsPopup';
 import '../themes.css';
 
-const PomodoroTimer = ({ selectedTheme}) => {
+const PomodoroTimer = ({ selectedTheme, selectedBackground, handleBackgroundChange }) => {
   const [time, setTime] = useState({ minutes: 50, seconds: 0 });
   const [timerRunning, setTimerRunning] = useState(false);
   const [isRestarting, setIsRestarting] = useState(false);
@@ -15,11 +16,9 @@ const PomodoroTimer = ({ selectedTheme}) => {
   const [showSettings, setShowSettings] = useState(false);
   const [studyTime, setStudyTime] = useState(50);
   const [breakTime, setBreakTime] = useState(25);
+  const [selectBackground] = useState('theme1');
 
 
-
-
-  // Handle session type change
   const handleSessionTypeChange = (type) => {
     setSessionType(type);
     if (type === 'study') {
@@ -80,7 +79,6 @@ const PomodoroTimer = ({ selectedTheme}) => {
     setShowSettings(true);
   };
 
-
   const handleSettingsClose = () => {
     setShowSettings(false);
   };
@@ -94,25 +92,27 @@ const PomodoroTimer = ({ selectedTheme}) => {
     } else {
       setTime({ minutes: breakTime, seconds: 0 });
     }
+
+    // Notify the parent component (App) about the background change
+    handleBackgroundChange(selectBackground);
     
 
-   
     setShowSettings(false);
   };
 
   return (
-    <div className={`pomodoro-timer-container ${selectedTheme}`}>
+    <div className={`pomodoro-timer-container ${selectedTheme} ${selectedBackground}`}>
       <h2>pomodoro</h2>
       <div className="timer-controls">
         <button
-          className={`control-button ${sessionType === "study" ? "active" : ""}`}
-          onClick={() => handleSessionTypeChange("study", 50)}
+          className={`control-button ${sessionType === 'study' ? 'active' : ''}`}
+          onClick={() => handleSessionTypeChange('study', 50)}
         >
           Study
         </button>
         <button
-          className={`control-button ${sessionType === "break" ? "active" : ""}`}
-          onClick={() => handleSessionTypeChange("break", 25)}
+          className={`control-button ${sessionType === 'break' ? 'active' : ''}`}
+          onClick={() => handleSessionTypeChange('break', 25)}
         >
           Break
         </button>
@@ -120,17 +120,17 @@ const PomodoroTimer = ({ selectedTheme}) => {
       <div className="clock">
         <div className="clock-numbers">
           <span className="digit">
-            {time.minutes.toString().padStart(2, "0").charAt(0)}
+            {time.minutes.toString().padStart(2, '0').charAt(0)}
           </span>
           <span className="digit">
-            {time.minutes.toString().padStart(2, "0").charAt(1)}
+            {time.minutes.toString().padStart(2, '0').charAt(1)}
           </span>
           <span>:</span>
           <span className="digit">
-            {time.seconds.toString().padStart(2, "0").charAt(0)}
+            {time.seconds.toString().padStart(2, '0').charAt(0)}
           </span>
           <span className="digit">
-            {time.seconds.toString().padStart(2, "0").charAt(1)}
+            {time.seconds.toString().padStart(2, '0').charAt(1)}
           </span>
         </div>
       </div>
@@ -158,6 +158,7 @@ const PomodoroTimer = ({ selectedTheme}) => {
           breakTime={breakTime}
           handleSettingsClose={handleSettingsClose}
           handleSettingsSave={handleSettingsSave}
+          handleBackgroundChange={handleBackgroundChange}
         />
       )}
     </div>

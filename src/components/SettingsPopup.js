@@ -1,3 +1,4 @@
+// SettingsPopup.js
 import React, { useState } from 'react';
 import '../SettingsPopup.css';
 import '../themes.css';
@@ -10,26 +11,18 @@ const SettingsPopup = ({
   breakTime,
   handleSettingsClose,
   handleSettingsSave,
-
+  handleBackgroundChange,
 }) => {
   const [selectedSetting, setSelectedSetting] = useState('general');
-  // New addition
-  const [selectBackground, setSelectedBackground]= useState();
-
+  const [selectBackground, setSelectBackground] = useState('theme1');
 
 
   const handleSettingSelect = (setting) => {
     setSelectedSetting(setting);
   };
 
-
-
-
-  
-  
-
   const renderSettingContent = () => {
-    if (selectedSetting === "general") {
+    if (selectedSetting === 'general') {
       return (
         <div>
           <h3 className="settings-title">General Settings</h3>
@@ -54,28 +47,28 @@ const SettingsPopup = ({
           </div>
         </div>
       );
-    } else if (selectedSetting === "background") {
+    } else if (selectedSetting === 'background') {
       return (
         <div>
           <h3 className="settings-title">Background Settings</h3>
           <div className="input-container">
-            {/* Add label for theme selection */}
             <div className="input-label">
               Select theme:
-              {/* The dropdown/select input */}
+              </div>
+              <div className='input-dropdown'>
               <select
-              value={selectBackground}
-              onChange={(e) => setSelectedBackground(e.target.value)}>
-
-                <option value="theme1">Theme 1</option>
-                <option value="theme2">Theme 2</option>
-                <option value="theme3">Theme 3</option>
-
+                value={selectBackground}
+                onChange={(e) => setSelectBackground(e.target.value)}
+              >
+                <option value="theme1">The Lights in the Dark</option>
+                <option value="theme2">Osaka Anime Aquarium</option>
+                <option value="theme3">Gojo Satoru</option>
+                <option value="theme4">Sunset on the Train</option>
+                <option value="theme5">A day in the Spring</option>
+                <option value="theme6">Sky full of Stars</option>
               </select>
             </div>
           </div>
-      
-          
         </div>
       );
     }
@@ -85,6 +78,7 @@ const SettingsPopup = ({
     setStudyTime(50);
     setBreakTime(25);
   };
+
 
   return (
     <div className={`settings-popup ${showSettings ? 'show' : ''}`}>
@@ -114,7 +108,7 @@ const SettingsPopup = ({
         <button className="close-button" onClick={handleSettingsClose}>
           Close
         </button>
-        <button className="save-button" onClick={handleSettingsSave}>
+        <button className="save-button" onClick={() => { handleSettingsSave(); handleBackgroundChange(selectBackground); }}>
           Save Changes
         </button>
       </div>
