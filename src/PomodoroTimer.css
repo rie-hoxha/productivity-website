@@ -8,13 +8,13 @@
   grid-template-rows: auto auto auto; /* Three rows with auto height */
   grid-template-columns: 1fr; /* Single column, takes full width */
   height: 100vh;
-  justify-content: center; /* Center content horizontally */
-  align-content: center; /* Center content vertically */
-  background-image: url('https://images4.alphacoders.com/133/1330653.png');
-  background-size: cover; 
+  justify-content: center; 
+  align-content: center; 
+  /* background-image: url('../src/images/image.png'); 
+  background-size: cover;  
   background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3); /* adds overlay */
+  background-repeat: no-repeat; */
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3); 
 }
 h2{
   text-align: center;

@@ -1,0 +1,24 @@
+
+
+.theme1 {
+    background-image: url('../src/images/image.png');
+    background-size: cover;  
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+.theme2 {
+    background-image: url('../src/images/image1.png');
+    background-size: cover;  
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+.theme3 {
+    background-image: url('../src/images/image2.png');
+    background-size: cover;  
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+  

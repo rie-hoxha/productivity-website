@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../SettingsPopup.css';
+import '../themes.css';
 
 const SettingsPopup = ({
   showSettings,
@@ -10,16 +11,25 @@ const SettingsPopup = ({
   handleSettingsClose,
   handleSettingsSave,
 
-  sessionType, //Added as a prop
 }) => {
   const [selectedSetting, setSelectedSetting] = useState('general');
+  // New addition
+  const [selectBackground, setSelectedBackground]= useState();
+
+
 
   const handleSettingSelect = (setting) => {
     setSelectedSetting(setting);
   };
 
+
+
+
+  
+  
+
   const renderSettingContent = () => {
-    if (selectedSetting === 'general') {
+    if (selectedSetting === "general") {
       return (
         <div>
           <h3 className="settings-title">General Settings</h3>
@@ -32,7 +42,7 @@ const SettingsPopup = ({
                 onChange={(e) => setStudyTime(e.target.value)}
               />
             </label>
-            
+
             <label className="input-label">
               Break Time (minutes):
               <input
@@ -44,24 +54,37 @@ const SettingsPopup = ({
           </div>
         </div>
       );
-    } else if (selectedSetting === 'background') {
+    } else if (selectedSetting === "background") {
       return (
         <div>
           <h3 className="settings-title">Background Settings</h3>
-          {/* Add your background settings content here */}
+          <div className="input-container">
+            {/* Add label for theme selection */}
+            <div className="input-label">
+              Select theme:
+              {/* The dropdown/select input */}
+              <select
+              value={selectBackground}
+              onChange={(e) => setSelectedBackground(e.target.value)}>
+
+                <option value="theme1">Theme 1</option>
+                <option value="theme2">Theme 2</option>
+                <option value="theme3">Theme 3</option>
+
+              </select>
+            </div>
+          </div>
+      
+          
         </div>
       );
     }
   };
 
   const handleResetAll = () => {
-    // Reset the study and break times to their initial values
-    setStudyTime(50); // Set it to the initial study time
-    setBreakTime(25); // Set it to the initial break time
-
-    // For the background resetting later
+    setStudyTime(50);
+    setBreakTime(25);
   };
-  
 
   return (
     <div className={`settings-popup ${showSettings ? 'show' : ''}`}>
@@ -85,17 +108,15 @@ const SettingsPopup = ({
         </div>
       </div>
       <div className="button-container">
-         <button className="reset-all-button" onClick={handleResetAll}>
+        <button className="reset-all-button" onClick={handleResetAll}>
           Reset All
         </button>
-         <button className="close-button" onClick={handleSettingsClose}>
+        <button className="close-button" onClick={handleSettingsClose}>
           Close
         </button>
         <button className="save-button" onClick={handleSettingsSave}>
           Save Changes
         </button>
-       
-       
       </div>
     </div>
   );

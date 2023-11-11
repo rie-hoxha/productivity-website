@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRedoAlt, faCog} from '@fortawesome/free-solid-svg-icons'; // Import the settings icon
+import { faRedoAlt, faCog } from '@fortawesome/free-solid-svg-icons';
 import '../PomodoroTimer.css';
-import SettingsPopup from './SettingsPopup'; // Import the new component
+import SettingsPopup from './SettingsPopup';
+import '../themes.css';
 
-const PomodoroTimer = () => {
+const PomodoroTimer = ({ selectedTheme}) => {
   const [time, setTime] = useState({ minutes: 50, seconds: 0 });
   const [timerRunning, setTimerRunning] = useState(false);
   const [isRestarting, setIsRestarting] = useState(false);
   const [sessionType, setSessionType] = useState('study');
   const [rotateClass, setRotateClass] = useState('');
   const [timerCompleted, setTimerCompleted] = useState(false);
-  const [showSettings, setShowSettings] = useState(false); // State for showing/hiding settings
-  const [studyTime, setStudyTime] = useState(50); // Initial study time
-  const [breakTime, setBreakTime] = useState(25); // Initial break time
+  const [showSettings, setShowSettings] = useState(false);
+  const [studyTime, setStudyTime] = useState(50);
+  const [breakTime, setBreakTime] = useState(25);
 
- 
+
+
+
   // Handle session type change
   const handleSessionTypeChange = (type) => {
     setSessionType(type);
@@ -77,43 +80,38 @@ const PomodoroTimer = () => {
     setShowSettings(true);
   };
 
+
   const handleSettingsClose = () => {
     setShowSettings(false);
   };
 
-
   const handleSettingsSave = () => {
-    // Update the session times with the new values
     setStudyTime(studyTime);
     setBreakTime(breakTime);
-  
-    // Update the time based on the current session type
+
     if (sessionType === 'study') {
       setTime({ minutes: studyTime, seconds: 0 });
     } else {
       setTime({ minutes: breakTime, seconds: 0 });
     }
-  
+    
+
+   
     setShowSettings(false);
   };
-  
 
   return (
-    <div className="pomodoro-timer-container">
+    <div className={`pomodoro-timer-container ${selectedTheme}`}>
       <h2>pomodoro</h2>
       <div className="timer-controls">
         <button
-          className={`control-button ${
-            sessionType === "study" ? "active" : ""
-          }`}
+          className={`control-button ${sessionType === "study" ? "active" : ""}`}
           onClick={() => handleSessionTypeChange("study", 50)}
         >
           Study
         </button>
         <button
-          className={`control-button ${
-            sessionType === "break" ? "active" : ""
-          }`}
+          className={`control-button ${sessionType === "break" ? "active" : ""}`}
           onClick={() => handleSessionTypeChange("break", 25)}
         >
           Break
