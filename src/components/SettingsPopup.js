@@ -1,5 +1,5 @@
 // SettingsPopup.js
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import '../SettingsPopup.css';
 import '../themes.css';
 
@@ -15,7 +15,6 @@ const SettingsPopup = ({
 }) => {
   const [selectedSetting, setSelectedSetting] = useState('general');
   const [selectBackground, setSelectBackground] = useState('theme1');
-
 
   const handleSettingSelect = (setting) => {
     setSelectedSetting(setting);
